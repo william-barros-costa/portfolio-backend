@@ -1,0 +1,25 @@
+name: Deploy to Docker Hub
+on:
+  pull_request:
+    branches: 
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Repository
+        uses: actions/checkout@v3
+        
+      - name: Test go code
+        id: test
+        run: echo "Change to test go code"
+        
+      - name: Notify on failure
+        if: steps.test.outputs.failure
+        run: echo "Change to Notify that test failed"
+
+  lint:
+    runs-on: ubuntu-latest
+
+  deploy:
+    runs-on: ubuntu-latest
