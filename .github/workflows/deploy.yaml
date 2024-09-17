@@ -17,6 +17,20 @@ jobs:
       - name: Notify on failure
         if: steps.test.outputs.failure
         run: echo "Change to Notify that test failed"
+  
+  sast:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run SAST
+        uses: AppThreat/sast-scan-action@master
+        with:
+            type: "go"
+
+      - name: Upload Result
+        uses: actions/upload-artifact@v1
+        with:
+          name: reports
+          path: reports
 
   lint:
     runs-on: ubuntu-latest
