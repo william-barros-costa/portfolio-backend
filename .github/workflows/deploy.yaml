@@ -34,6 +34,10 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    steps:
+      - run: echo "linter"
 
   deploy:
     runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy"
