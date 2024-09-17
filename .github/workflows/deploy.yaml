@@ -13,32 +13,29 @@ jobs:
     steps:
       - name: Get Repository
         uses: actions/checkout@v4
-        
       - name: Test go code
         id: test
         run: echo "Change to test go code"
-        
       - name: Notify on failure
         if: steps.test.outputs.failure
         run: echo "Change to Notify that test failed"
   
   sast:
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
     steps:
       - name: Get Repository
         uses: actions/checkout@v4
-    
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
             languages: "go"
-            
       - name: Build CodeQL
         uses: github/codeql-action/autobuild@v3
-      
       - name: Run CodeQL
         uses: github/codeql-action/analyze@v3
-
       - name: Export Results
         uses: actions/upload-artifact@v3
         with:
