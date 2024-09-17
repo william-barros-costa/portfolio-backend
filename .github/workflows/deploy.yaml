@@ -31,7 +31,7 @@ jobs:
             type: "go"
 
       - name: Upload Result
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: reports
           path: reports
