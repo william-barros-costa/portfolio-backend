@@ -1,5 +1,6 @@
 name: Deploy to Docker Hub
 on:
+  workflow_dispatch:  
   push:
     branches:
       - master
